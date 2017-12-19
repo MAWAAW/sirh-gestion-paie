@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ImportResource;
 import dev.paie.entite.BulletinSalaire;
 
 @Configuration
-@ComponentScan({"dev.paie.util"})
+//@ComponentScan({"dev.paie.util"})
 @ImportResource("classpath:jdd-config.xml")
 public class JeuxDeDonneesConfig {
 
