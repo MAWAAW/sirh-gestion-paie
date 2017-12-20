@@ -1,6 +1,8 @@
 package dev.paie.service;
 
+import java.sql.ResultSet;
 import java.util.List;
+import java.util.function.Function;
 
 import javax.sql.DataSource;
 
@@ -24,7 +26,7 @@ public class GradeServiceJdbcTemplate implements GradeService {
 	}
 
 	public void sauvegarder(Grade nouveauGrade) {
-		String sql = "INSERT INTO GRADE (CODE,NBHEURESBASE,TAUXBASE) VALUES (?,?,?)";
+		String sql = "INSERT INTO GRADE (code,nbHeuresBase,tauxBase) VALUES (?,?,?)";
 		this.jdbcTemplate.update(sql,
 				nouveauGrade.getCode(),
 				nouveauGrade.getNbHeuresBase(),
@@ -33,7 +35,7 @@ public class GradeServiceJdbcTemplate implements GradeService {
 	}
 	
 	public void mettreAJour(Grade grade) {
-		String sql = "UPDATE GRADE SET CODE=?,NBHEURESBASE=?,TAUXBASE=? WHERE ID=?";
+		String sql = "UPDATE GRADE SET code=?,nbHeuresBase=?,tauxBase=? WHERE id=?";
 		this.jdbcTemplate.update(sql,  
 				grade.getCode(),
 				grade.getNbHeuresBase(),
@@ -44,13 +46,13 @@ public class GradeServiceJdbcTemplate implements GradeService {
 
 	public List<Grade> lister() {
 		String sql = "SELECT * FROM GRADE";
-		return this.jdbcTemplate.query(sql, new GradeMapper());
+		return this.jdbcTemplate.query(sql, (rs, rowNum) -> {
+			Grade grade = new Grade();
+			grade.setCode(rs.getString("code"));
+			grade.setNbHeuresBase(rs.getBigDecimal("nbheuresbase"));
+			grade.setTauxBase(rs.getBigDecimal("tauxbase"));
+			return grade;	
+		});
 	}
-	
-	public Grade getGradeByCode(String code) {
-		String sql = "SELECT * FROM GRADE where CODE = ?";
-		return this.jdbcTemplate.queryForObject(sql, new GradeMapper(), code);
-	}
-	
 	
 }

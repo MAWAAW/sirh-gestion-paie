@@ -3,12 +3,12 @@ package dev.paie.config;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-
-import dev.paie.spring.DataSourceH2Config;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Configuration
 @ComponentScan({"dev.paie.service", "dev.paie.util"})
-@Import(DataSourceH2Config.class)
+@Import({DataSourceMultiConfig.class, JpaConfig.class})
+@EnableJpaRepositories("dev.paie.repository")
 public class ServicesConfig {
 
 }

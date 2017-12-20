@@ -6,6 +6,7 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 @Service
