@@ -12,6 +12,8 @@ import dev.paie.config.WebAppConfig;
 
 public class WebAppInitializer implements WebApplicationInitializer {
 	
+	
+	// Comme le main dans une appli jar mais pour les webapp -> C'est la première chose executer au lancement de l'appli
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
 		
