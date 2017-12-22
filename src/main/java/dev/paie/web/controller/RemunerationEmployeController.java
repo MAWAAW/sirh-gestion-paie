@@ -60,9 +60,8 @@ public class RemunerationEmployeController {
 		remunerationEmploye.setEntreprise(entrepriseRepository.findOne(entreprise));
 		remunerationEmploye.setGrade(gradeRepository.findOne(grade));
 		remunerationEmploye.setProfilRemuneration(profilRemunerationRepository.findOne(profil));
-		System.out.println("avant le save");
 		remunerationEmployeRepository.save(remunerationEmploye);
-		System.out.println("apres le save");
+
 		return "redirect:lister";
 	}
 	

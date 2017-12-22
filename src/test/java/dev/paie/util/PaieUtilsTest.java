@@ -6,18 +6,20 @@ import static org.junit.Assert.assertThat;
 import java.math.BigDecimal;
 
 import org.junit.*;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import dev.paie.config.ServicesConfig;
+
+@ContextConfiguration(classes = { ServicesConfig.class })
+@RunWith(SpringRunner.class)
 public class PaieUtilsTest {
 
-	private ClassPathXmlApplicationContext context;
+	@Autowired
 	private PaieUtils paieUtils;
-	
-	@Before
-	public void onSetup() {
-		context = new ClassPathXmlApplicationContext("classpath:app-config.xml");
-		paieUtils = context.getBean(PaieUtils.class);
-	}
 	
 	@Test
 	public void test_formaterBigDecimal_entier_positif() {
@@ -35,11 +37,6 @@ public class PaieUtilsTest {
 	public void test_formaterBigDecimal_entier_negatif() {
 		String resultat = paieUtils.formaterBigDecimal(new BigDecimal("-2"));
 		assertThat(resultat, equalTo("-2.00"));
-	}
-	
-	@After
-	public void onExit() {
-		context.close();
 	}
 	
 }

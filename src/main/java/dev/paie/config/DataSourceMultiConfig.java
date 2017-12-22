@@ -19,15 +19,15 @@ public class DataSourceMultiConfig {
 	
 	@Bean
 	@Profile("genericdb")
-	public DataSource dataSource(@Value("${jdbc.driver}")String driver, @Value("${jdbc.database.url}")String url, @Value("${jdbc.database.user}")String user, @Value("${jdbc.database.password}")String password) {
+	public DataSource dataSource(@Value("${jdbc.driver}")String driver, @Value("${jdbc.database.url}")String url, 
+			@Value("${jdbc.database.user}")String user, @Value("${jdbc.database.password}")String password) {
 	
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName(driver);
 		dataSource.setUrl(url);
 		dataSource.setUsername(user);
 		dataSource.setPassword(password);
-		return dataSource;
-		
+		return dataSource;		
 	}
 	
 	@Bean
@@ -35,12 +35,7 @@ public class DataSourceMultiConfig {
 	public DataSource dataSourceH2() {
 	
 		EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
-		EmbeddedDatabase dataSource = builder
-				.setType(EmbeddedDatabaseType.H2)
-				//.addScript("db/sql/create-db.sql")
-				//.addScript("db/sql/insert-data.sql")
-				.build();
+		EmbeddedDatabase dataSource = builder.setType(EmbeddedDatabaseType.H2).build();
 		return dataSource;
 	}
-	
 }

@@ -14,7 +14,6 @@ import dev.paie.util.PaieUtils;
 public class CalculerRemunerationServiceSimple implements CalculerRemunerationService {
 
 	@Autowired
-	@Qualifier("paieUtils")
 	private PaieUtils paieUtils;
 
 	@Override

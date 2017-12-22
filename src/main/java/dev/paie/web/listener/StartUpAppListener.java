@@ -15,6 +15,6 @@ public class StartUpAppListener {
 
 	@EventListener(ContextRefreshedEvent.class)
 	public void contextRefreshedEvent() {
-		initService.initialiser();
+//		initService.initialiser();
 	}
 }

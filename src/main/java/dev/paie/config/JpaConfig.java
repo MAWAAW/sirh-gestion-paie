@@ -39,11 +39,10 @@ public class JpaConfig {
 		factory.setPackagesToScan("dev.paie.entite");
 		factory.setDataSource(dataSource);
 		// Configurer le mode drop-and-create
-		Properties jpaProperties = new Properties();
-		jpaProperties.setProperty("javax.persistence.schema-generation.database.action", "drop-and-create");
-		factory.setJpaProperties(jpaProperties);
+//		Properties jpaProperties = new Properties();
+//		jpaProperties.setProperty("javax.persistence.schema-generation.database.action", "drop-and-create");
+//		factory.setJpaProperties(jpaProperties);
 		factory.afterPropertiesSet();
 		return factory.getObject();
 	}
-
 }

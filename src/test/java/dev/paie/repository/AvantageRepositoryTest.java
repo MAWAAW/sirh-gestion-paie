@@ -14,7 +14,7 @@ import dev.paie.config.DataSourceMultiConfig;
 import dev.paie.config.ServicesConfig;
 import dev.paie.entite.Avantage;
 
-@ContextConfiguration(classes = { ServicesConfig.class, DataSourceMultiConfig.class })
+@ContextConfiguration(classes = { ServicesConfig.class })
 @RunWith(SpringRunner.class)
 public class AvantageRepositoryTest {
 	
